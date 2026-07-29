@@ -31,14 +31,13 @@ This document provides full technical details for the E-Commerce Sales Cleaning 
    - Imputed 309 missing entries with `"No Coupon"`.
 2. **Field Verification:**
    - Validated mathematical integrity: `TotalPrice = Quantity * UnitPrice`.
+   - Verified zero duplicate keys for `OrderID` and `TrackingNumber`.
 ## 4. Project Details
 1. **Project Name:** Ecommerce Analysis
 2. **Company:** DecodeLab
 3. **Email** jshahram2382005@gmail.com
 4. **Developer** Shahram Hussain
 5. **Linkedin** www.linkedin.com/in/shahram-hussain-b39244399
-
-   - Verified zero duplicate keys for `OrderID` and `TrackingNumber`.
 
 ## 4. Key Metrics Summary
 - **Gross Revenue:** $1,264,761.96
