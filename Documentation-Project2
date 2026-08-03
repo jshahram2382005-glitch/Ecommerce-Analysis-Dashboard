@@ -1,0 +1,88 @@
+📊 Power BI Project Documentation: E-commerce Sales & Performance Analysis
+📌 Executive Summary
+This project presents an end-to-end interactive dashboard designed in Power BI using the cleaned sales dataset Ecommerce_Sales_Cleaned_data (1).xlsx. The primary objective is to analyze transaction metrics, revenue distributions across product categories, order status patterns, and customer payment behaviors to enable data-driven operational decisions.
+
+📁 Dataset & Data Architecture
+Dataset Overview
+Total Records: 1,200 unique orders
+
+Unique Customers: 1,189 customers
+
+Date Range Analyzed: January 2023 – Mid 2025
+
+Primary Key: OrderID
+
+Data Dictionary
+Field Name	Data Type	Description
+OrderID	String	Unique transaction identifier
+Date	Date	Date of transaction
+CustomerID	String	Unique identifier for customer
+Product	String	Category of hardware/furniture sold
+Quantity	Integer	Number of units purchased
+UnitPrice	Decimal	Cost per individual unit ($)
+ShippingAddress	String	Customer delivery location
+PaymentMethod	String	Mode of transaction (Credit Card, Online, Cash, etc.)
+OrderStatus	String	Current status (Delivered, Shipped, Pending, Cancelled, Returned)
+TrackingNumber	String	Unique shipment tracking code
+ItemsInCart	Integer	Total items in cart during session
+CouponCode	String	Promo code applied (SAVE10, FREESHIP, etc.)
+ReferralSource	String	Acquisition channel (Instagram, Email, Facebook, etc.)
+TotalPrice	Decimal	Calculated total revenue ($)
+💡 Key Business Metrics & Calculations (DAX Measures)
+Code snippet
+// Total Revenue
+Total Revenue = SUM('Ecommerce_Sales'[TotalPrice])
+
+// Total Orders
+Total Orders = DISTINCTCOUNT('Ecommerce_Sales'[OrderID])
+
+// Average Order Value (AOV)
+Average Order Value = DIVIDE([Total Revenue], [Total Orders], 0)
+
+// Total Units Sold
+Total Quantity Sold = SUM('Ecommerce_Sales'[Quantity])
+📈 Key Metrics Summary
+Total Revenue Generated: $1,264,761.96
+
+Total Transactions: 1,200 Orders
+
+Average Order Value (AOV): $1,053.97
+
+Top Product Category: Chair ($195,620.11) closely followed by Printer ($195,612.61)
+
+📊 Dashboard Visualizations & Structure
+├── Executive Summary Cards (KPIs: Total Revenue, Total Orders, AOV, Total Customers)
+├── Visual 1: Product Revenue Performance (Dual Axis / Clustered Bar Chart)
+├── Visual 2: Order Fulfillment & Status Distribution (Donut / Pie Chart)
+├── Visual 3: Revenue by Payment Method (Column Chart)
+├── Visual 4: Acquisition Channel Efficiency (Referral Source vs. Revenue)
+└── Interactive Slicers (Date Range Filter, Order Status Filter, Category Filter)
+1. Core KPI Cards
+Displays top-line business stats at a glance ($1.26M Revenue, 1.2K Orders, $1.05K AOV).
+
+2. Revenue by Product Category
+Chairs ($195.6K) and Printers ($195.6K) generate the highest revenue share.
+
+Phones ($151.7K) present the lowest relative revenue share despite stable order volume.
+
+3. Operational Order Breakdown
+Cancelled & Returned Orders: Combined, cancelled (250) and returned (247) orders account for ~41% of total transactions.
+
+Fulfillment Tracking: 231 delivered, 235 shipped, and 237 pending orders.
+
+4. Payment Channel Distribution
+Credit Card ($263.8K) and Online Transfers ($262.4K) drive the highest transaction revenue, though Cash, Gift Cards, and Debit Cards maintain balanced utilization (~20% distribution each).
+
+🛠️ Data Cleaning & Transformations Applied
+Formatting & Data Types: Ensured TotalPrice and UnitPrice are strictly formatted to currency decimals; verified datetime formatting on Date.
+
+Calculated Columns Validation: Verified that TotalPrice = Quantity * UnitPrice.
+
+Null & Duplicate Auditing: Cleaned trailing spaces and missing values across shipping address string fields.
+
+🚀 Strategic Recommendations
+Fulfillment Optimization: Investigating why ~41% of orders end up cancelled or returned can yield immediate revenue recovery.
+
+Cross-Selling & Promotions: Pair low-margin or lower-selling items like Phones with high-performing essentials like Monitors and Desks.
+
+Payment Gateways: Continue optimizing digital channels (Credit/Online) while retaining flexible payment options due to balanced payment preference.
